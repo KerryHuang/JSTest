@@ -10,8 +10,38 @@
 <script src="~/Scripts/gitgraph.js"></script>
 
 <script>
+
+    // https://jsfiddle.net/wellwind/k8o8gwe4/
+    // http://gitgraphjs.com
     var gitgraph = new GitGraph();
 
+    //1. a specifictemplate: "blackarrow" or "metro" (default)
+    //2. the graph orientation:
+    //    "vertical-reverse"
+    //    "horizontal"
+    //    "horizontal-reverse"
+    //    "vertical" (default)
+    //3. the display mode: "compact" for a compact mode, or "extended" (default)
+    //4. the elementId: the canvas ID ("gitGraph" is the default)
+    //5. a default author for commits
+
+    // For instance:
+    //var gitgraph = new GitGraph({
+    //    template: "blackarrow",
+    //    reverseArrow: false,
+    //    orientation: "horizontal",
+    //    mode: "compact"
+    //});
+
+    // Or with another template:
+    //var gitgraph = new GitGraph({
+    //    template: "metro",
+    //    orientation: "horizontal",
+    //    mode: "compact"
+    //});
+
+
+    // Let's create our first branch. We give the branch name as a parameter.
     // Init branch
     var master = gitgraph.branch("表單");
 
