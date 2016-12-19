@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Scripts/dropzone/basic.min.css" rel="stylesheet" />
+<link href="~/Scripts/dropzone/dropzone.min.css" rel="stylesheet" />
+@*@Styles.Render("~/Content/dropzonescss")*@
+
+
+@*<form action="/file-upload" id="form1" class="dropzone"></form>*@
+
+@*<form action="@Url.Action("Index", "Dropzone")" method="post" class="dropzone" enctype="multipart/form-data">
+     <div class="fallback">
+         <input name="file" type="file" multiple />
+     </div>
+</form>*@
+
+@using (Html.BeginForm("Index", "Dropzone", FormMethod.Post, new { enctype = "multipart/form-data", @class="dropzone" }))
+{    
+}
+
+
+@section Scripts {
+    @*@Scripts.Render("~/bundles/dropzonescripts")*@
+    <script src="~/Scripts/dropzone/dropzone.min.js"></script>
+    <script>
+        $(function () {
+
+        });
+    </script>
+}
