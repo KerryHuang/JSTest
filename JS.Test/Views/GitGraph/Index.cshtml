@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<link href="~/Content/gitgraph.css" rel="stylesheet" />
+
+<canvas id="gitGraph"></canvas>
+
+<script src="~/Scripts/gitgraph.js"></script>
+
+<script>
+    var gitgraph = new GitGraph();
+
+    // Init branch
+    var master = gitgraph.branch("表單");
+
+    // Init commit
+    master.commit({
+        sha1: "2016/12/15 10:00",
+        message: "表單傳閱",
+        author: "by 總經理"
+    });
+
+    // two branches
+    var rdBranch = master.branch("研發部");
+    var finBranch = master.branch("財務部");
+
+    rdBranch.checkout();
+    gitgraph.commit({
+        sha1: "2016/12/17 11:00",
+        message: "表單已閱",
+        author: "by Wellwind"
+    });
+
+    finBranch.checkout();
+    gitgraph.commit({
+        sha1: "2016/12/17 11:05",
+        message: "表單已閱",
+        author: "by Shawn"
+    });
+
+    rdBranch.checkout();
+    gitgraph.commit({
+        sha1: "2016/12/17 13:00",
+        message: "表單已閱",
+        author: "by Mike"
+    });
+
+    finBranch.checkout();
+    gitgraph.commit({
+        sha1: "2016/12/18 09:30",
+        message: "表單已閱",
+        author: "by Jack"
+    });
+
+    gitgraph.commit({
+        sha1: "2016/12/18 11:30",
+        message: "表單已閱",
+        author: "by Mary",
+        tag: "經費核准"
+    });
+
+    finBranch.merge(master, {
+        dotColor: "lightGreen",
+        sha1: "2016/12/18 11:30",
+        message: "財務部已傳閱完畢",
+        author: "by System"
+    });
+    finBranch.delete();
+
+    rdBranch.checkout();
+    gitgraph.commit({
+        sha1: "2016/12/18 13:40",
+        message: "表單已閱",
+        author: "by Susan"
+    });
+
+    rdBranch.merge(master, {
+        dotColor: "lightGreen",
+        sha1: "2016/12/18 13:40",
+        message: "研發部已傳閱完畢",
+        author: "by System"
+    });
+    rdBranch.delete();
+
+    master.commit({
+        dotColor: "black",
+        sha1: "2016/12/18 13:40",
+        message: "表單已傳閱完畢",
+        author: "by System"
+    });
+</script>
