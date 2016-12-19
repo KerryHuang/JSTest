@@ -134,6 +134,7 @@
     <Compile Include="Controllers\DropzoneController.cs" />
     <Compile Include="Controllers\GitGraphController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IntroController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -145,6 +146,14 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\gitgraph.css" />
+    <Content Include="Content\introjs-dark.css" />
+    <Content Include="Content\introjs-nassim.css" />
+    <Content Include="Content\introjs-nazanin.css" />
+    <Content Include="Content\introjs-royal.css" />
+    <Content Include="Content\introjs-rtl.css" />
+    <Content Include="Content\introjs-rtl.min.css" />
+    <Content Include="Content\introjs.css" />
+    <Content Include="Content\introjs.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -169,6 +178,10 @@
     <Content Include="Scripts\dropzone\dropzone.min.css" />
     <Content Include="Scripts\dropzone\dropzone.min.js" />
     <Content Include="Scripts\gitgraph.js" />
+    <Content Include="Scripts\intro.js" />
+    <Content Include="Scripts\intro.min.js" />
+    <Content Include="Scripts\introjs-rtl.min.css" />
+    <Content Include="Scripts\introjs.min.css" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
@@ -200,6 +213,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\GitGraph\Index.cshtml" />
     <Content Include="Views\Dropzone\Index.cshtml" />
+    <Content Include="Views\Intro\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

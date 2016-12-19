@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/introjs.min.css" rel="stylesheet" />
+
+<div class="row">
+    <div class="form-group">
+        <div>
+            <button id="start" data-hint="點說明按鈕開始導覽" class="btn btn-default">
+                ?說明
+            </button>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div data-step="1" data-intro="請先輸入姓名">
+            <span>姓名</span>
+            <input type="text" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div data-step="2" data-intro="再輸入EMail">
+            <span>Email</span>
+            <input type="text" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div data-step="3" data-intro="最後按下送出，就完成註冊囉">
+            <input type="button" value="送出" class="btn btn-success">
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/Scripts/intro.js"></script>
+
+    <script>
+        document.getElementById('start').addEventListener('click', function () {
+            introJs().setOption('showProgress', true).start();
+        });
+
+        introJs().addHints();
+    </script>
+}
