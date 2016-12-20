@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Canvas版</h2>
+<div id="qrcode"></div>
+
+<h2>Table版</h2>
+<div id="qrcode-table"></div>
+
+<h2>
+    自訂size (120x120)
+</h2>
+<div id="qrcode-size"></div>
+
+@section Scripts {
+    <script src="~/Scripts/jquery.qrcode.min.js"></script>
+    <script>
+        $(function () {
+            $('#qrcode').qrcode('http://www.google.com');
+
+            $('#qrcode-table').qrcode({
+                render: 'table',
+                text: 'http://www.google.com'
+            });
+
+            $('#qrcode-size').qrcode({
+                width: 120,
+                height: 120,
+                text: 'http://www.google.com'
+            });
+        });
+    </script>
+}
