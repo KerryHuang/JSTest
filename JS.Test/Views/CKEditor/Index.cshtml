@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<textarea name="editorDemo">
+    <h2>CKEditor Demo</h2>
+    <hr />
+    <p>使用CKEditor，人生變得好簡單啊！</p>
+</textarea>
+<button id="alertContent">取得HTML</button>
+<div id="divhtml">
+
+</div>
+
+@section Scripts {
+    <script src="~/Scripts/ckeditor/ckeditor.js"></script>
+    <script>
+        $(function () {
+            var editor = CKEDITOR.replace('editorDemo');
+
+            $('#alertContent').click(function () {
+                // CKEDITOR.instances.editorDemo.updateElement();
+                console.log($('textarea[name=editorDemo]').val());
+                console.log(CKEDITOR.instances.editorDemo.getData());
+            });
+        });
+    </script>
+}
