@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h1 id="fullScreenSupport"></h1>
+</div>
+<div>
+    <button id="fullScreen">
+        全螢幕顯示
+    </button>
+    <button id="imageFullScreen">
+        將圖片全螢幕顯示
+    </button>
+    <button id="cancelFullScreen">
+        取消全螢幕
+    </button>
+</div>
+
+<img id="image" src="http://placehold.it/500x300" />
+
+@section Scripts {
+    <script src="~/Scripts/screenfull.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#fullScreenSupport').html(
+            screenfull.enabled
+            ? '瀏覽器支援全螢幕API'
+            : '瀏覽器不支援全螢幕API');
+        });
+
+        $('#fullScreen').click(function () {
+            if (screenfull.enabled) {
+                screenfull.request();
+            }
+        });
+
+        $('#imageFullScreen').click(function () {
+            if (screenfull.enabled) {
+                screenfull.request(document.getElementById('image'));
+            }
+        });
+
+        $('#cancelFullScreen').click(function () {
+            if (screenfull.enabled) {
+                screenfull.exit();
+            }
+        });  
+    </script>
+}
+

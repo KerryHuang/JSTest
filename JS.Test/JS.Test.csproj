@@ -139,6 +139,7 @@
     <Compile Include="Controllers\IntroController.cs" />
     <Compile Include="Controllers\MaterializeController.cs" />
     <Compile Include="Controllers\QRCodeController.cs" />
+    <Compile Include="Controllers\ScreenfullController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -607,6 +608,8 @@
     <Content Include="Scripts\qrcode.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\screenfull.js" />
+    <Content Include="Scripts\screenfull.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -630,6 +633,7 @@
     <Content Include="Views\QRCode\Index.cshtml" />
     <Content Include="Views\CKEditor\Index.cshtml" />
     <Content Include="Views\Materialize\Index.cshtml" />
+    <Content Include="Views\Screenfull\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
