@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/dragula.min.css" rel="stylesheet" />
+<style>
+    .gu-mirror {
+        filter: alpha(opacity=80);
+        transform: skewX(-5deg) skewY(5deg);
+    }
+
+    .kanban-card {
+        cursor: pointer;
+    }
+
+    body {
+        margin: 10px;
+    }
+</style>
+
+<div id="kanban" class="row">
+    <div class="col-xs-4">
+        <div class="panel panel-info">
+            <div class="panel-heading pointer">
+                <h3 class="panel-title">Todo</h3>
+            </div>
+            <div class="panel-body">
+                <div id="todo">
+                    &nbsp;
+                    <div class="alert alert-success pointer" role="alert">Card1</div>
+                    <div class="alert alert-success pointer" role="alert">Card2</div>
+                    <div class="alert alert-success pointer" role="alert">Card3</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <div class="panel panel-info">
+            <div class="panel-heading pointer">
+                <h3 class="panel-title">In Progress</h3>
+            </div>
+            <div class="panel-body">
+                <div id="in-progress">
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <div class="panel panel-info">
+            <div class="panel-heading pointer">
+                <h3 class="panel-title">Done</h3>
+            </div>
+            <div class="panel-body">
+                <div id="done">
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/Scripts/dragula.min.js"></script>
+    <script>
+        $(function () {
+            var dragulaCards = dragula([
+                document.querySelector('#todo'),
+                document.querySelector('#in-progress'),
+                document.querySelector('#done')
+            ]);
+
+            dragulaCards.on('drop', function (el, target, source, sibling) {
+                console.log(source); // from
+                console.log(target); // to
+                console.log(sibling); // next card
+            });
+
+            var dragulaKanban = dragula([
+              document.querySelector('#kanban')
+            ], {
+                moves: function (el, container, handle) {
+                    return handle.classList.contains('panel-title');
+                }
+            });
+        });
+    </script>
+}
