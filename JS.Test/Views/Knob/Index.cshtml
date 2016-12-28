@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- // TODO Step1  -->
+<input type="text" value="75" class="dial">
+<!-- // TODO Step2  -->
+<input type="text" value="25" class="dial" data-min="-50" data-max="50">
+<!-- // TODO Step3  -->
+<div class="row">
+    <div class="col-xs-4 text-center">
+        時
+    </div>
+    <div class="col-xs-4 text-center">
+        分
+    </div>
+    <div class="col-xs-4 text-center">
+        秒
+    </div>
+    <div class="col-xs-4 text-center">
+        <input type="text" id="hour" class="dial" data-min="0" data-max="11" data-width="100%" data-readOnly="true">
+    </div>
+    <div class="col-xs-4 text-center">
+        <input type="text" id="min" class="dial" data-min="1" data-max="59" data-width="100%" data-readOnly="true">
+    </div>
+    <div class="col-xs-4 text-center">
+        <input type="text" id="sec" class="dial" data-min="1" data-max="59" data-width="100%" data-readOnly="true">
+    </div>
+</div>
+<!-- // TODO Step4  -->
+<div class="row">
+    <div class="col-xs-12">
+        調整明亮度
+    </div>
+    <div class="col-xs-12">
+        <input type="text" id="setBrightness" data-min="0" data-max="100" value="100">
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/Scripts/jquery.knob.min.js"></script>
+    <script src="~/Scripts/moment.min.js"></script>
+    <script>
+        $(function () {
+            $('.dial').knob();
+
+            function setTime() {
+                $('#hour').val(moment().get('hour') - 12).trigger('change');;
+                $('#min').val(moment().get('minute')).trigger('change');;
+                $('#sec').val(moment().get('second')).trigger('change');;
+            }
+
+            setInterval(function () {
+                setTime();
+            }, 1000);
+
+            setTime();
+
+            function setBrightness(value) {
+                var brightness = parseInt(255 * value / 100);
+                var textBrightness = Math.abs(255 - brightness);
+                $('body').css('background-color', 'rbg(' + brightness + ', ' + brightness + ', ' + brightness + ')');
+                $('body').css('color', 'rgb(' + textBrightness + ', ' + textBrightness + ', ' + textBrightness + ')');
+            }
+
+            $('#setBrightness').knob({
+                'change': function (value) {
+                    setBrightness(value);
+                },
+                'release': function (value) {
+                    setBrightness(value);
+                }
+            });
+        });
+    </script>
+}
